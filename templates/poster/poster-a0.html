@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Poster template – A0 portrait</title>
+<link rel="stylesheet" href="../../css/index.css">
+<link rel="stylesheet" href="../../css/poster.css">
+</head>
+<body>
+<!--
+  A0 portrait poster template (841 x 1189 mm).
+  Replace every [bracketed] placeholder and every .placeholder box.
+  Render to PDF:  scripts/render-poster.sh templates/poster/poster-a0.html out.pdf
+  Style rules:    docs/poster-style.md
+-->
+<main class="poster">
+
+  <!-- ================= HEADER ================= -->
+  <header class="poster-header">
+    <div class="poster-meta">
+      <div class="poster-id">[P00.000.X]</div>
+      <div class="poster-contact">
+        * <a href="mailto:first.author@umcg.nl">first.author@umcg.nl</a><br>
+        ** <a href="mailto:last.author@umcg.nl">last.author@umcg.nl</a>
+      </div>
+    </div>
+    <div class="poster-titleblock">
+      <h1 class="poster-title">[TOOL]: [one-sentence title that states the question or the contribution, wrapping onto two lines]</h1>
+      <p class="poster-authors">
+        [First Author] <sup>*1</sup>, [Second Author] <sup>1</sup>, [Third Author] <sup>1</sup>, [Fourth Author] <sup>2</sup>, [Fifth Author] <sup>1</sup>, [Sixth Author] <sup>1</sup>, [Seventh Author] <sup>1</sup>,
+        [Eighth Author] <sup>2</sup>, [Ninth Author] <sup>1</sup>, [Tenth Author] <sup>1</sup>, and [Last Author] <sup>**1</sup>
+      </p>
+    </div>
+  </header>
+
+  <!-- ================= BODY ================= -->
+  <div class="poster-body">
+
+    <!-- Full-width introduction -->
+    <section class="section">
+      <h2 class="section-title">Introduction</h2>
+      <div class="panel panel--lead">
+        <p>[Problem in one or two sentences: what limits current practice.] [Why existing approaches fall short.] Here, we present the <b>[Full Name of the Method (ACRONYM)]</b>, [one line on what it is and what makes it different], built on features such as:</p>
+        <ul class="bullets">
+          <li><b>[Key]</b> feature one</li>
+          <li><b>[Key]</b> feature two</li>
+          <li>Feature three <b>in bold where it matters</b></li>
+          <li>Feature four <b>(ABBR)</b>* <span class="footnote">&nbsp;*[Optional footnote]</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="columns">
+
+      <!-- ---------- Left column ---------- -->
+      <div class="column">
+        <!-- Key figure, framed in red to draw the eye -->
+        <figure class="figure">
+          <div class="highlight" style="height: 900pt;">
+            <div class="placeholder">Key figure (e.g. explanation plot)<br>~760 x 810 pt, red frame</div>
+          </div>
+          <figcaption class="caption caption--center"><span class="fig-no">Figure 2</span>: [short caption]</figcaption>
+        </figure>
+
+        <section class="section section--grow">
+          <h2 class="section-title">Discussion</h2>
+          <div class="panel">
+            <p>[What the result means and why it is useful.] [Main limitation, stated plainly.]</p>
+            <p>[Contrast with alternative approaches.]</p>
+            <p>[Closing sentence: the trade-off and what future work should address.]</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ---------- Right column ---------- -->
+      <div class="column">
+        <section class="section">
+          <h2 class="section-title">Results</h2>
+          <div class="panel">
+            <figure class="figure">
+              <div class="subfigs">
+                <div class="subfig"><div class="subfig-title"><span class="badge">A</span>[Panel A title]</div><div class="placeholder">plot</div></div>
+                <div class="subfig"><div class="subfig-title"><span class="badge">B</span>[Panel B title]</div><div class="placeholder">plot</div></div>
+                <div class="subfig"><div class="subfig-title"><span class="badge">C</span>[Panel C title]</div><div class="placeholder">plot</div></div>
+              </div>
+              <figcaption class="caption"><span class="fig-no">Figure 1:</span> [A] [what panel A shows]. [B] [what panel B shows]. [C] [what panel C shows].</figcaption>
+            </figure>
+            <p style="margin-top: 14pt;">[Headline metric, with the number in bold: <b>0.00</b>.] [How the evaluation was done (fig 1a, 1b, 1c).] [Point to the worked example shown in figures 2 and 3.]</p>
+          </div>
+        </section>
+
+        <!-- Free-standing figure area (no panel): large render + detail views + QR -->
+        <figure class="figure" style="flex: 1 1 auto; min-height: 0;">
+          <div style="flex: 1 1 auto; display: grid; grid-template-columns: 1fr 310pt; gap: 24pt; min-height: 0;">
+            <div style="position: relative; display: flex; flex-direction: column; justify-content: flex-end;">
+              <div class="placeholder" style="position: absolute; inset: 0;">Main image / render<br>(no border, sits on white)</div>
+              <div class="qr" style="position: relative; align-self: flex-end; margin: 0 20pt 20pt 0; background: var(--c-white);">
+                <div class="placeholder">QR</div>
+                <div class="qr-text">[Scan to explore<br>call to action]</div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10pt;">
+              <div style="font-size: 54pt; text-align: center;">[State] <span class="ok">&#10003;</span></div>
+              <div class="placeholder" style="flex: 1;">detail view 1</div>
+              <div style="font-size: 54pt; text-align: center;">[State] <span class="fail">&#10007;</span></div>
+              <div class="placeholder" style="flex: 1;">detail view 2</div>
+            </div>
+          </div>
+          <figcaption class="caption caption--center"><span class="fig-no">Figure 3:</span> [right] [what the main image shows], [left top] [detail 1] and [left bottom] [detail 2].</figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="poster-footer">
+    <img class="footer-logo-left" src="../../assets/logos/molgenis-logo-white.png" alt="MOLGENIS">
+    <ol class="affiliations">
+      <li>Department of Genetics, University of Groningen and University Medical Center Groningen,<br>Antonius Deusinglaan 1, 9713 AV, Groningen, The Netherlands</li>
+      <li>[Department, Institution,<br>Street, Postcode, City, Country]</li>
+    </ol>
+    <img class="footer-logo-right" src="../../assets/logos/umcg-logo-white.png" alt="UMCG">
+  </footer>
+
+</main>
+</body>
+</html>

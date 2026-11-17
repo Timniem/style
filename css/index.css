@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Shared design tokens
+   Source of truth for colours, type and shape across posters, slides,
+   applications and documents. Derived from the DAVE ESHG 2025 poster.
+   ========================================================================== */
+
+/* Helvetica substitute (metric-compatible, SIL OFL 1.1).
+   Real Helvetica / Helvetica Neue / Arial are used first when installed. */
+@font-face { font-family: "Liberation Sans"; src: url("../fonts/liberation-sans/LiberationSans-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Liberation Sans"; src: url("../fonts/liberation-sans/LiberationSans-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "Liberation Sans"; src: url("../fonts/liberation-sans/LiberationSans-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; }
+@font-face { font-family: "Liberation Sans"; src: url("../fonts/liberation-sans/LiberationSans-BoldItalic.ttf") format("truetype"); font-weight: 700; font-style: italic; }
+
+:root {
+  /* ---- Brand blues (header / footer gradient) ---- */
+  --c-blue-900: #003EC0;   /* gradient start, left edge            */
+  --c-blue-600: #3B6EE1;   /* gradient midpoint                    */
+  --c-blue-300: #8AA9FF;   /* gradient end, right edge             */
+  --c-blue-accent: #007DFE;/* data colour: benign / "good" series  */
+  --g-brand: linear-gradient(90deg, var(--c-blue-900) 0%, var(--c-blue-300) 100%);
+
+  /* ---- Accents ---- */
+  --c-pink: #FE0C57;       /* data colour: pathogenic / emphasis   */
+  --c-pink-wash: rgba(254, 12, 87, 0.22); /* zoom wedges, tints   */
+  --c-red: #FF0000;        /* highlight frame, arrows              */
+  --c-green: #4EA72E;      /* positive check mark                  */
+
+  /* ---- Neutrals ---- */
+  --c-ink: #212121;        /* all body text and outlines (never pure black) */
+  --c-white: #FFFFFF;
+  --c-surface: #F2F2F2;    /* figure-caption background            */
+  --c-shadow: rgba(0, 0, 0, 0.28);
+
+  /* ---- Type ---- */
+  --font-sans: "Helvetica", "Helvetica Neue", "Arial", "Liberation Sans", "Arimo", sans-serif;
+  --weight-regular: 400;   /* titles and headings are REGULAR, not bold */
+  --weight-bold: 700;      /* used only for inline emphasis            */
+
+  /* ---- Shape ---- */
+  --stroke: 3pt;           /* panel / card outline                     */
+  --stroke-callout: 4.5pt; /* annotation label outline                 */
+  --stroke-highlight: 6pt; /* red "look here" frame                    */
+  --radius: 32pt;          /* rounded section panels                   */
+}
