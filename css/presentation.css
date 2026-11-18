@@ -1,0 +1,106 @@
+/* ==========================================================================
+   16:9 presentation (slides) — layout and components
+   Uses the shared tokens from index.css. Guide: docs/presentation-style.md
+   Template: templates/presentation/presentation-16x9.html
+
+   Every slide is drawn on a fixed 1600 x 900 px canvas (#deck) that the
+   template's script scales to fit the window, so all sizes here are px on
+   that canvas. Poster sizes in index.css are in pt; the slide-scale
+   stroke and radius are overridden on #deck below.
+   ========================================================================== */
+
+#deck {
+  --stroke: 3px;
+  --radius: 28px;
+  --hdr-h: 118px;
+  --ftr-h: 74px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #1b1e24; overflow: hidden; }
+body { font-family: var(--font-sans); color: var(--c-ink); -webkit-font-smoothing: antialiased; }
+
+/* ---------- canvas, scaled to the window ---------- */
+#viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+#deck { position: relative; width: 1600px; height: 900px; flex: none; transform-origin: center center;
+        background: var(--c-white); box-shadow: 0 20px 60px rgba(0,0,0,.45); overflow: hidden; }
+
+.slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .55s ease; }
+.slide.active { opacity: 1; pointer-events: auto; }
+
+/* ---------- header band: gradient, triangle, slide number, centred title ---------- */
+.hdr { position: absolute; left: 0; top: 0; width: 100%; height: var(--hdr-h); background: var(--g-brand);
+       color: #fff; box-shadow: 0 6px 14px var(--c-shadow); z-index: 3; }
+.hdr::before { content: ""; position: absolute; left: 0; top: 0; width: 210px; height: var(--hdr-h);
+               background: rgba(255,255,255,.29); clip-path: polygon(0 0, 100% 0, 0 100%); }
+.hdr .sid { position: absolute; left: 26px; top: 18px; font-size: 22px; letter-spacing: .02em; }
+.hdr h1 { position: absolute; left: 230px; right: 230px; top: 0; height: var(--hdr-h); margin: 0;
+          display: flex; align-items: center; justify-content: center; text-align: center;
+          font-weight: var(--weight-regular); font-size: 50px; line-height: 1.05; }
+
+/* ---------- footer band: logo left, navigation centre, logo right ---------- */
+.ftr { position: absolute; left: 0; bottom: 0; width: 100%; height: var(--ftr-h); background: var(--g-brand); color: #fff; z-index: 3; }
+.ftr .mg { position: absolute; left: 26px; top: 10px; height: 54px; }
+.ftr .um { position: absolute; right: 30px; top: 23px; height: 28px; }
+.ftr .mid { position: absolute; left: 50%; top: 0; height: var(--ftr-h); transform: translateX(-50%);
+            display: flex; align-items: center; gap: 22px; font-size: 15px; }
+.ftr button { font: inherit; font-size: 22px; line-height: 1; color: #fff; background: rgba(255,255,255,.18);
+              border: 2px solid rgba(255,255,255,.7); border-radius: 50%; width: 38px; height: 38px; cursor: pointer; }
+.ftr button:hover { background: rgba(255,255,255,.35); }
+
+/* ---------- body ---------- */
+.body { position: absolute; left: 0; right: 0; top: var(--hdr-h); bottom: var(--ftr-h); }
+.col { position: absolute; top: 24px; bottom: 22px; }
+h2.sec { font-weight: var(--weight-regular); font-size: 34px; text-align: center; margin: 0 0 8px; }
+.panel { border: var(--stroke) solid var(--c-ink); border-radius: var(--radius); padding: 18px 26px;
+         background: #fff; font-size: 21px; line-height: 1.3; }
+.panel p { margin: 0 0 8px; text-align: justify; hyphens: auto; }
+.panel p:last-child { margin-bottom: 0; }
+.panel ul { margin: 4px 0 0; padding-left: 24px; }
+.panel li { margin: 0 0 6px; }
+b { font-weight: var(--weight-bold); }
+.pink { color: var(--c-pink); font-weight: var(--weight-bold); }
+.blue { color: var(--c-blue-accent); font-weight: var(--weight-bold); }
+.k { display: inline-block; background: var(--c-surface); border-radius: 6px; padding: 0 7px;
+     font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; font-size: .8em; }
+.mono { font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; font-size: .86em; font-style: normal; }
+.muted { color: #555; }
+
+/* 3D stage: the template moves one WebGL canvas into the active slide's .stage */
+.stage { position: absolute; cursor: grab; }
+.stage:active { cursor: grabbing; }
+.stage canvas { display: block; }
+
+/* figure caption strip */
+.cap { position: absolute; background: var(--c-surface); font-style: italic; font-size: 17px; line-height: 1.3;
+       padding: 8px 16px; text-align: center; }
+.cap b { font-style: italic; }
+.cap .pink-txt { color: var(--c-pink); font-style: normal; }
+
+/* A/B/C badge for multi-panel figures */
+.badge { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px;
+         border-radius: 50%; background: var(--c-ink); color: #fff; font-size: 18px; margin-right: 10px; vertical-align: middle; }
+
+pre.code { background: var(--c-surface); border-radius: 14px; padding: 12px 16px; margin: 8px 0 0;
+           font-size: 14px; line-height: 1.38; white-space: pre; overflow: hidden; }
+
+/* ---------- title slide ---------- */
+.title-hdr { position: absolute; left: 0; top: 0; width: 100%; height: 300px; background: var(--g-brand);
+             color: #fff; box-shadow: 0 6px 14px var(--c-shadow); z-index: 3; }
+.title-hdr::before { content: ""; position: absolute; left: 0; top: 0; width: 420px; height: 290px;
+                     background: rgba(255,255,255,.29); clip-path: polygon(0 0, 100% 0, 0 100%); }
+.title-hdr .links { position: absolute; left: 30px; bottom: 26px; font-size: 14px; opacity: .92; }
+.title-hdr h1 { position: absolute; left: 60px; right: 60px; top: 46px; margin: 0; font-weight: var(--weight-regular);
+                font-size: 64px; line-height: 1.08; text-align: center; }
+.title-hdr h1 small { display: block; font-size: 40px; margin-top: 6px; }
+.title-hdr .sub { position: absolute; left: 60px; right: 60px; top: 205px; font-size: 21px; line-height: 1.45; text-align: center; }
+.title-hdr .sub sup { font-size: 13px; }
+.title-body { top: 300px; }
+
+.navhint { font-size: 16px; color: #6b7280; }
+.kbd { display: inline-block; border: 1.5px solid #9aa0aa; border-bottom-width: 3px; border-radius: 6px;
+       padding: 0 7px; font-size: 14px; margin: 0 2px; color: var(--c-ink); }
+
+#loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 18px;
+           color: #6b7280; z-index: 10; background: #fff; transition: opacity .4s; }
+#glfail { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; color: #6b7280; font-size: 16px; }

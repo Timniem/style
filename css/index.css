@@ -29,6 +29,7 @@
   --c-ink: #212121;        /* all body text and outlines (never pure black) */
   --c-white: #FFFFFF;
   --c-surface: #F2F2F2;    /* figure-caption background            */
+  --c-grey-data: #C9CFDA;  /* neutral data points (not significant / unresolved); never a series colour */
   --c-shadow: rgba(0, 0, 0, 0.28);
 
   /* ---- Type ---- */

@@ -36,6 +36,42 @@ Content:
 
 ---
 
+## Presentation (16:9, with 3D)
+
+```
+Make a presentation in our house style using the `style` repository.
+
+Start from templates/presentation/presentation-16x9.html and keep css/index.css and
+css/presentation.css unchanged; follow docs/presentation-style.md. Edit the slide HTML
+and the SCENES in the template's script.
+
+Rules:
+- 1600 x 900 canvas. Blue gradient header (slide number top-left, centred regular-weight
+  title) and footer (MOLGENIS logo, page navigation, UMCG logo). No section labels and no
+  "drag to rotate" hints.
+- Title slide: title centred across the full width. Internal talk: no names or
+  affiliations.
+- Text in outlined panels with the heading centred above; bold for key terms, pink for
+  the finding or the new thing. Captions on #F2F2F2, "Figure N:", and say when a figure
+  is an illustration, schematic, simplified or a concept.
+- 3D with Three.js (pinned in the template). Text on box faces as planes. Pink/blue for
+  data, grey for neutral, dashed white boxes for optional or new steps, red frame for the
+  one thing to look at.
+- Motion runs once per slide visit and must explain something: no flowing particles,
+  floating objects or auto-rotation. Pipelines show one subtle wave from inputs to
+  outputs in dependency order (a step waits for all its inputs).
+- Pipeline diagrams come from the workflow source (e.g. workflow.csv, main.nf); name the
+  source and version in the caption.
+- Render every slide with scripts/render-slides.sh and check the PNGs; bundle with
+  scripts/bundle-presentation.py into one HTML file.
+
+Content:
+<title>, <subtitle>, <internal or external>, <repositories / sources>,
+<one line per slide: message + figure>, <references>
+```
+
+---
+
 ## Extracting the style from a new reference
 
 ```
